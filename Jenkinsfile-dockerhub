@@ -2,7 +2,7 @@ pipeline {
     agent any 
 
      options {
-        timeout(time: 60, unit: 'MINUTES')
+        timeout(time: 160, unit: 'MINUTES')
      }
     environment {
     DOCKERHUB_CREDENTIALS = credentials('goody-dockerhub')
