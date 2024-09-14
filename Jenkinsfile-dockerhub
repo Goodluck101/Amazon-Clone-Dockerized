@@ -15,10 +15,15 @@ pipeline {
             }
         }
         // run sonarqube test
-        stage('Run Sonarqube') {
-            environment {
-                scannerHome = tool 'ibt-sonarqube';
-            }
+       // stage('Run Sonarqube') {
+       //     environment {
+        //        scannerHome = tool 'NexGenix-SQ';
+       //     }
+    
+        stage('SonarQube Analysis') {
+        environment{
+          sonarScan = tool 'NexGenix-SQ'
+        }
             steps {
               //withSonarQubeEnv(credentialsId: 'ibt-sonar', installationName: 'IBT sonarqube') {
               withSonarQubeEnv(credentialsId: 'NexGenix-SQ-cred', installationName: 'NexGenix-SQ-for-Jenkins') {
