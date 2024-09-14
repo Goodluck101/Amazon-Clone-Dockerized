@@ -20,8 +20,10 @@ pipeline {
                 scannerHome = tool 'ibt-sonarqube';
             }
             steps {
-              withSonarQubeEnv(credentialsId: 'ibt-sonar', installationName: 'IBT sonarqube') {
-                sh "${scannerHome}/bin/sonar-scanner"
+              //withSonarQubeEnv(credentialsId: 'ibt-sonar', installationName: 'IBT sonarqube') {
+              withSonarQubeEnv(credentialsId: 'NexGenix-SQ-cred', installationName: 'NexGenix-SQ-for-Jenkins') {
+                //sh "${scannerHome}/bin/sonar-scanner"
+                sh "$sonarScan/bin/sonar-scanner"
               }
             }
         }
