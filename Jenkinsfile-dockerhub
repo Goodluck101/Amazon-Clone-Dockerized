@@ -5,7 +5,7 @@ pipeline {
         timeout(time: 10, unit: 'MINUTES')
      }
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_HUB_API_KEY')
+    DOCKERHUB_CREDENTIALS = credentials('goody-dockerhub')
     APP_NAME = "goodluck101/amazon"
     }
     stages { 
@@ -34,6 +34,7 @@ pipeline {
         }
         stage('login to dockerhub') {
             steps{
+               // echo "your_password" | docker login -u your_username --password-stdin
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
