@@ -6,7 +6,7 @@ pipeline {
      }
     environment {
     DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_HUB_API_KEY')
-    APP_NAME = "ooghenekaro/amazon"
+    APP_NAME = "goodluck101/amazon"
     }
     stages { 
         stage('SCM Checkout') {
