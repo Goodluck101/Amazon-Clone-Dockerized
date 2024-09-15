@@ -5,7 +5,6 @@ pipeline {
         timeout(time: 160, unit: 'MINUTES')
      }
     environment {
-    DOCKER_BUILDKIT = '1'
     DOCKERHUB_CREDENTIALS = credentials('goody-dockerhub')
     APP_NAME = "goodluck101/amazon"
     }
