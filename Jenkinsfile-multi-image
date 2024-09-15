@@ -2,11 +2,11 @@ pipeline {
     agent none 
 
      options {
-        timeout(time: 10, unit: 'MINUTES')
+        timeout(time: 30, unit: 'MINUTES')
      }
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('karo-dockerhub')
-    APP_NAME = "ooghenekaro/amazon"
+    DOCKERHUB_CREDENTIALS = credentials('goody-dockerhub')
+    APP_NAME = "goodluck101/amazon"
     }
     stages { 
         stage('SCM Checkout') {
@@ -16,7 +16,7 @@ pipeline {
       }
             
             steps{
-           git branch: 'main', url: 'https://github.com/ooghenekaro/Amazon-clone-Dockerized.git'
+           git branch: 'main', url: 'https://github.com/Goodluck101/Amazon-Clone-Dockerized.git'
             }
         }
         // run sonarqube test
@@ -36,7 +36,7 @@ pipeline {
                 sh 'docker build -t $APP_NAME:$BUILD_NUMBER .'
             }
         }
-        stage('login to dockerhub') {
+        stage('Login to dockerhub') {
                 agent any
             steps{
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
